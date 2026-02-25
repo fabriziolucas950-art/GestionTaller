@@ -1,918 +1,2337 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fabrizio Admin | CRM para Carpinterías y Fábricas de Muebles</title>
-<meta name="description" content="El sistema de gestión diseñado para carpinterías y fábricas de muebles argentinas. Controlá clientes, presupuestos, proveedores y gastos desde un solo lugar.">
-<meta name="keywords" content="CRM carpinteria, software carpinteria argentina, gestion presupuestos, facturacion carpinteria, sistema muebles">
-<meta property="og:title" content="Fabrizio Admin | CRM para Carpinterías">
-<meta property="og:description" content="El único sistema pensado para carpinterías argentinas. Presupuestos PDF, gestión de clientes, control de proveedores y estadísticas en tiempo real.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_AR">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---bg:#0f172a;--bg2:#1e293b;--bg3:#0f1f38;
---blue:#3b82f6;--blue-light:#60a5fa;--blue-dark:#1d4ed8;
---green:#10b981;--green-light:#34d399;
---text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
---border:rgba(255,255,255,0.07);
---glass:rgba(30,41,59,0.5);
---radius:1rem;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:#334155;border-radius:3px}
-a{text-decoration:none;color:inherit}
-img{max-width:100%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TallerPRO | CRM para Carpinterías y Fábricas de Muebles</title>
+    <meta name="description"
+        content="TallerPRO: el sistema de gestión diseñado para carpinterías y fábricas de muebles argentinas. Controlá clientes, presupuestos, proveedores y gastos desde un solo lugar.">
+    <meta name="keywords"
+        content="CRM carpinteria, software carpinteria argentina, gestion presupuestos, facturacion carpinteria, sistema muebles">
+    <meta property="og:title" content="TallerPRO | CRM para Carpinterías">
+    <meta property="og:description"
+        content="TallerPRO: el único sistema pensado para carpinterías argentinas. Presupuestos PDF, gestión de clientes, control de proveedores y estadísticas en tiempo real.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
 
-/* UTILS */
-.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-.section{padding:5rem 0}
-.section-label{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-light);margin-bottom:.5rem}
-.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:1rem}
-.section-sub{font-size:1.05rem;color:var(--text2);max-width:600px}
-.text-center{text-align:center}
-.text-center .section-sub{margin:0 auto}
-.gradient-text{background:linear-gradient(135deg,var(--blue-light),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius)}
+        :root {
+            --bg: #0f172a;
+            --bg2: #1e293b;
+            --bg3: #0f1f38;
+            --blue: #3b82f6;
+            --blue-light: #60a5fa;
+            --blue-dark: #1d4ed8;
+            --green: #10b981;
+            --green-light: #34d399;
+            --text: #f1f5f9;
+            --text2: #94a3b8;
+            --text3: #64748b;
+            --border: rgba(255, 255, 255, 0.07);
+            --glass: rgba(30, 41, 59, 0.5);
+            --radius: 1rem;
+        }
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .25s;border:none}
-.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;box-shadow:0 0 30px rgba(59,130,246,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(59,130,246,.5)}
-.btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border)}
-.btn-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
-.btn-green{background:linear-gradient(135deg,var(--green),#059669);color:#fff;box-shadow:0 0 30px rgba(16,185,129,.3)}
-.btn-green:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(16,185,129,.5)}
-.btn-lg{padding:1.1rem 2.25rem;font-size:1.05rem}
+        html {
+            scroll-behavior: smooth
+        }
 
-/* ANIMATIONS */
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(59,130,246,.3)}50%{box-shadow:0 0 40px rgba(59,130,246,.6)}}
-@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-.anim-fade{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-.anim-fade.visible{opacity:1;transform:translateY(0)}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}
-.floating{animation:float 6s ease-in-out infinite}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6
+        }
 
-/* NAV */
-#navbar{position:fixed;top:0;width:100%;z-index:100;padding:1.1rem 0;transition:all .3s}
-#navbar.scrolled{background:rgba(15,23,42,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 0}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem}
-.nav-logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.2rem}
-.nav-logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--green));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{font-size:.88rem;font-weight:500;color:var(--text2);transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{display:flex;align-items:center;gap:1rem}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem}
-.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
-#mobile-nav{display:none;flex-direction:column;gap:1rem;padding:1.5rem;border-top:1px solid var(--border)}
-#mobile-nav.open{display:flex}
-#mobile-nav a{color:var(--text2);font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border)}
+        ::-webkit-scrollbar {
+            width: 6px
+        }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative;overflow:hidden}
-.hero-glow1{position:absolute;top:10%;left:10%;width:500px;height:500px;background:rgba(59,130,246,.12);border-radius:50%;filter:blur(100px);pointer-events:none}
-.hero-glow2{position:absolute;bottom:10%;right:5%;width:400px;height:400px;background:rgba(16,185,129,.1);border-radius:50%;filter:blur(100px);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:50px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green-light);font-size:.78rem;font-weight:700;letter-spacing:.05em;margin-bottom:1.5rem}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-glow 2s ease-in-out infinite}
-.hero-title{font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:900;line-height:1.1;margin-bottom:1.25rem}
-.hero-sub{font-size:1.1rem;color:var(--text2);margin-bottom:2rem;max-width:520px;line-height:1.7}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.hero-trust{display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:var(--text3)}
-.hero-trust-avatars{display:flex}
-.hero-trust-avatars span{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--green));border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;margin-left:-6px}
-.hero-trust-avatars span:first-child{margin-left:0}
+        ::-webkit-scrollbar-track {
+            background: var(--bg)
+        }
 
-/* MOCKUP */
-.mockup-wrap{position:relative}
-.mockup-window{background:#111827;border:1px solid #1f2937;border-radius:14px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05) inset}
-.mockup-bar{background:#1f2937;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid #111827}
-.dot{width:10px;height:10px;border-radius:50%}
-.dot-r{background:#ef4444}.dot-y{background:#f59e0b}.dot-g{background:#10b981}
-.mockup-url{background:#111827;border-radius:4px;padding:.2rem .75rem;font-size:.7rem;color:#4b5563;flex:1;margin-left:.5rem}
-.mockup-body{padding:1rem;display:flex;gap:.75rem;min-height:300px}
-.mock-sidebar{width:140px;flex-shrink:0;display:flex;flex-direction:column;gap:.4rem}
-.mock-sidebar-logo{background:linear-gradient(135deg,var(--blue),var(--green));border-radius:8px;padding:.5rem .75rem;font-size:.7rem;font-weight:800;margin-bottom:.5rem;text-align:center}
-.mock-nav-item{padding:.45rem .6rem;border-radius:6px;font-size:.68rem;color:#6b7280;display:flex;align-items:center;gap:.4rem;cursor:pointer;transition:all .2s}
-.mock-nav-item.active{background:rgba(59,130,246,.15);color:var(--blue-light);border:1px solid rgba(59,130,246,.2)}
-.mock-nav-item:not(.active):hover{background:rgba(255,255,255,.04);color:#9ca3af}
-.mock-main{flex:1;display:flex;flex-direction:column;gap:.75rem}
-.mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
-.mock-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem}
-.mock-stat-val{font-size:1.1rem;font-weight:800;margin-top:.25rem}
-.mock-stat-lbl{font-size:.6rem;color:#4b5563}
-.mock-table{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;overflow:hidden}
-.mock-tr{display:flex;align-items:center;gap:.5rem;padding:.45rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.65rem}
-.mock-tr:last-child{border:none}
-.mock-tr-head{background:rgba(255,255,255,.04);color:#6b7280;font-weight:700;font-size:.6rem}
-.mock-badge{padding:.15rem .5rem;border-radius:50px;font-size:.55rem;font-weight:700}
-.mock-badge-green{background:rgba(16,185,129,.15);color:var(--green-light)}
-.mock-badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24}
-.mock-badge-red{background:rgba(239,68,68,.15);color:#f87171}
-.mock-float{position:absolute;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:10px;padding:.6rem .9rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-.mock-float1{bottom:-18px;left:-30px;animation:float 5s ease-in-out infinite}
-.mock-float2{top:20px;right:-25px;animation:float 4s ease-in-out 1s infinite}
-.mock-float-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.mock-float-text{font-size:.7rem}
-.mock-float-text strong{display:block;font-weight:700;font-size:.75rem}
-.mock-float-text span{color:var(--text2);font-size:.65rem}
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px
+        }
 
-/* PROBLEM SECTION */
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
-.pain-list{display:flex;flex-direction:column;gap:1rem}
-.pain-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;border-radius:12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);transition:all .3s}
-.pain-item:hover{background:rgba(239,68,68,.1);transform:translateX(4px)}
-.pain-icon{width:38px;height:38px;border-radius:8px;background:rgba(239,68,68,.15);color:#f87171;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.pain-text strong{display:block;font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
-.pain-text span{font-size:.82rem;color:var(--text2)}
-.solution-steps{display:flex;flex-direction:column;gap:1.5rem}
-.step-item{display:flex;align-items:flex-start;gap:1.25rem;position:relative}
-.step-item::before{content:'';position:absolute;left:20px;top:48px;bottom:-24px;width:2px;background:linear-gradient(to bottom,var(--blue),transparent)}
-.step-item:last-child::before{display:none}
-.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0;box-shadow:0 0 20px rgba(59,130,246,.3)}
-.step-content strong{display:block;font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.step-content span{font-size:.85rem;color:var(--text2)}
+        a {
+            text-decoration: none;
+            color: inherit
+        }
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.feat-card{padding:1.75rem;border-radius:16px;background:var(--glass);border:1px solid var(--border);transition:all .3s;cursor:default;position:relative;overflow:hidden}
-.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(59,130,246,.04));opacity:0;transition:opacity .3s}
-.feat-card:hover{transform:translateY(-5px);border-color:rgba(59,130,246,.3);box-shadow:0 20px 40px rgba(0,0,0,.3)}
-.feat-card:hover::before{opacity:1}
-.feat-icon{font-size:2rem;margin-bottom:1rem;display:block}
-.feat-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-.feat-desc{font-size:.85rem;color:var(--text2);line-height:1.65}
-.feat-tag{display:inline-block;margin-top:.75rem;padding:.25rem .6rem;border-radius:50px;font-size:.7rem;font-weight:700;background:rgba(59,130,246,.1);color:var(--blue-light);border:1px solid rgba(59,130,246,.2)}
+        img {
+            max-width: 100%
+        }
 
-/* DEMO SECTION */
-.demo-wrap{margin-top:3rem;position:relative}
-.demo-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.demo-tab{padding:.5rem 1.1rem;border-radius:50px;font-size:.82rem;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .2s}
-.demo-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-.demo-screen{display:none}
-.demo-screen.active{display:block}
-.demo-cta-box{text-align:center;margin-top:2.5rem;padding:2rem;border-radius:16px;background:rgba(59,130,246,.06);border:1px dashed rgba(59,130,246,.3)}
+        /* UTILS */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem
+        }
 
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;align-items:start}
-.price-card{padding:2rem;border-radius:20px;background:var(--glass);border:1px solid var(--border);position:relative}
-.price-card.featured{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 30px 60px rgba(59,130,246,.15);transform:scale(1.03)}
-.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;padding:.3rem 1.1rem;border-radius:50px;font-size:.72rem;font-weight:800;letter-spacing:.08em;white-space:nowrap}
-.price-name{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
-.price-desc{font-size:.82rem;color:var(--text2);margin-bottom:1.5rem}
-.price-amount{font-size:2.8rem;font-weight:900;line-height:1;margin-bottom:.25rem}
-.price-amount sup{font-size:1.2rem;vertical-align:top;margin-top:.5rem;font-weight:700;color:var(--text2)}
-.price-period{font-size:.82rem;color:var(--text3);margin-bottom:1.5rem}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem}
-.price-features li{font-size:.85rem;display:flex;align-items:flex-start;gap:.6rem;color:var(--text2)}
-.price-features li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0}
-.price-features li.disabled{color:var(--text3)}
-.price-features li.disabled::before{content:'✕';color:var(--text3)}
-.price-btn{width:100%;padding:.9rem;border-radius:12px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s;border:none;text-align:center;display:block}
+        .section {
+            padding: 5rem 0
+        }
 
-/* TESTIMONIALS */
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.testi-card{padding:1.75rem;border-radius:16px;background:var(--glass);border:1px solid var(--border);transition:all .3s}
-.testi-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.2)}
-.testi-stars{color:#f59e0b;font-size:1rem;margin-bottom:.75rem;letter-spacing:.1em}
-.testi-text{font-size:.9rem;line-height:1.7;color:var(--text2);margin-bottom:1.25rem;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:.75rem}
-.testi-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;flex-shrink:0}
-.testi-name{font-weight:700;font-size:.9rem}
-.testi-role{font-size:.78rem;color:var(--text3)}
+        .section-label {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--blue-light);
+            margin-bottom: .5rem
+        }
 
-/* FAQ */
-.faq-list{max-width:750px;margin:3rem auto 0;display:flex;flex-direction:column;gap:.75rem}
-.faq-item{border-radius:12px;background:var(--glass);border:1px solid var(--border);overflow:hidden;transition:border-color .2s}
-.faq-item.open{border-color:rgba(59,130,246,.3)}
-.faq-q{padding:1.1rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:600;font-size:.95rem}
-.faq-icon{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;font-size:1rem}
-.faq-item.open .faq-icon{transform:rotate(45deg)}
-.faq-a{display:none;padding:0 1.5rem 1.25rem;font-size:.88rem;color:var(--text2);line-height:1.7}
-.faq-item.open .faq-a{display:block}
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 1rem
+        }
 
-/* CTA FINAL */
-.cta-final{padding:6rem 0;position:relative;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(16,185,129,.08));pointer-events:none}
-.cta-box{text-align:center;max-width:700px;margin:0 auto;position:relative}
-.cta-urgency{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:50px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#f87171;font-size:.8rem;font-weight:700;margin-bottom:1.5rem}
-.cta-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:1rem}
-.cta-sub{color:var(--text2);font-size:1rem;margin-bottom:2.5rem}
-.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.cta-fine{font-size:.78rem;color:var(--text3)}
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text2);
+            max-width: 600px
+        }
 
-/* TECH STRIP */
-.tech-strip{padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--glass)}
-.tech-items{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
-.tech-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;color:var(--text3)}
-.tech-item span{font-size:1.1rem}
+        .text-center {
+            text-align: center
+        }
 
-/* STATS STRIP */
-.stats-strip{padding:4rem 0}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.stat-val{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--blue-light),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.stat-lbl{font-size:.85rem;color:var(--text2);margin-top:.3rem}
+        .text-center .section-sub {
+            margin: 0 auto
+        }
 
-/* FOOTER */
-footer{padding:3rem 0 2rem;border-top:1px solid var(--border)}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
-.footer-brand p{font-size:.85rem;color:var(--text2);margin-top:.75rem;line-height:1.6}
-.footer-col h4{font-size:.85rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.footer-col ul li a{font-size:.82rem;color:var(--text3);transition:color .2s}
-.footer-col ul li a:hover{color:var(--text)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--text3)}
+        .gradient-text {
+            background: linear-gradient(135deg, var(--blue-light), var(--green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-.hero-grid{grid-template-columns:1fr;text-align:center}
-.hero-sub{margin:0 auto 2rem}
-.hero-btns{justify-content:center}
-.hero-trust{justify-content:center}
-.mockup-wrap{display:none}
-.problem-grid{grid-template-columns:1fr}
-.features-grid{grid-template-columns:1fr 1fr}
-.pricing-grid{grid-template-columns:1fr}
-.price-card.featured{transform:none}
-.testimonials-grid{grid-template-columns:1fr}
-.stats-grid{grid-template-columns:repeat(2,1fr)}
-.footer-grid{grid-template-columns:1fr;gap:2rem}
-.footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
-.nav-links,.nav-cta{display:none}
-.hamburger{display:flex}
-}
-@media(max-width:600px){
-.features-grid{grid-template-columns:1fr}
-.hero-btns{flex-direction:column;align-items:center}
-.hero-btns .btn{width:100%;justify-content:center}
-.cta-btns{flex-direction:column;align-items:center}
-.cta-btns .btn{width:100%;justify-content:center}
-}
-</style>
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius)
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .85rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all .25s;
+            border: none
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: #fff;
+            box-shadow: 0 0 30px rgba(59, 130, 246, .35)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(59, 130, 246, .5)
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .06);
+            color: var(--text);
+            border: 1px solid var(--border)
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, .1);
+            transform: translateY(-2px)
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--green), #059669);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(16, 185, 129, .3)
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(16, 185, 129, .5)
+        }
+
+        .btn-lg {
+            padding: 1.1rem 2.25rem;
+            font-size: 1.05rem
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, .3)
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, .6)
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0
+            }
+
+            100% {
+                background-position: 200% 0
+            }
+        }
+
+        .anim-fade {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .anim-fade.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .delay-1 {
+            transition-delay: .1s
+        }
+
+        .delay-2 {
+            transition-delay: .2s
+        }
+
+        .delay-3 {
+            transition-delay: .3s
+        }
+
+        .delay-4 {
+            transition-delay: .4s
+        }
+
+        .delay-5 {
+            transition-delay: .5s
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite
+        }
+
+        /* NAV */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.1rem 0;
+            transition: all .3s
+        }
+
+        #navbar.scrolled {
+            background: rgba(15, 23, 42, .92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: .75rem 0
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-weight: 800;
+            font-size: 1.2rem
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            font-size: .88rem;
+            font-weight: 500;
+            color: var(--text2);
+            transition: color .2s
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: .3rem
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all .3s
+        }
+
+        #mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border)
+        }
+
+        #mobile-nav.open {
+            display: flex
+        }
+
+        #mobile-nav a {
+            color: var(--text2);
+            font-weight: 500;
+            padding: .5rem 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 0 4rem;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-glow1 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(59, 130, 246, .12);
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none
+        }
+
+        .hero-glow2 {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(16, 185, 129, .1);
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            background: rgba(16, 185, 129, .1);
+            border: 1px solid rgba(16, 185, 129, .3);
+            color: var(--green-light);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse-glow 2s ease-in-out infinite
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.25rem
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text2);
+            margin-bottom: 2rem;
+            max-width: 520px;
+            line-height: 1.7
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            font-size: .82rem;
+            color: var(--text3)
+        }
+
+        .hero-trust-avatars {
+            display: flex
+        }
+
+        .hero-trust-avatars span {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            border: 2px solid var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .65rem;
+            font-weight: 700;
+            margin-left: -6px
+        }
+
+        .hero-trust-avatars span:first-child {
+            margin-left: 0
+        }
+
+        /* MOCKUP */
+        .mockup-wrap {
+            position: relative
+        }
+
+        .mockup-window {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .05) inset
+        }
+
+        .mockup-bar {
+            background: #1f2937;
+            padding: .6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            border-bottom: 1px solid #111827
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%
+        }
+
+        .dot-r {
+            background: #ef4444
+        }
+
+        .dot-y {
+            background: #f59e0b
+        }
+
+        .dot-g {
+            background: #10b981
+        }
+
+        .mockup-url {
+            background: #111827;
+            border-radius: 4px;
+            padding: .2rem .75rem;
+            font-size: .7rem;
+            color: #4b5563;
+            flex: 1;
+            margin-left: .5rem
+        }
+
+        .mockup-body {
+            padding: 1rem;
+            display: flex;
+            gap: .75rem;
+            min-height: 300px
+        }
+
+        .mock-sidebar {
+            width: 140px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem
+        }
+
+        .mock-sidebar-logo {
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            border-radius: 8px;
+            padding: .5rem .75rem;
+            font-size: .7rem;
+            font-weight: 800;
+            margin-bottom: .5rem;
+            text-align: center
+        }
+
+        .mock-nav-item {
+            padding: .45rem .6rem;
+            border-radius: 6px;
+            font-size: .68rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .mock-nav-item.active {
+            background: rgba(59, 130, 246, .15);
+            color: var(--blue-light);
+            border: 1px solid rgba(59, 130, 246, .2)
+        }
+
+        .mock-nav-item:not(.active):hover {
+            background: rgba(255, 255, 255, .04);
+            color: #9ca3af
+        }
+
+        .mock-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem
+        }
+
+        .mock-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .5rem
+        }
+
+        .mock-stat {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 8px;
+            padding: .6rem
+        }
+
+        .mock-stat-val {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-top: .25rem
+        }
+
+        .mock-stat-lbl {
+            font-size: .6rem;
+            color: #4b5563
+        }
+
+        .mock-table {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .mock-tr {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .45rem .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            font-size: .65rem
+        }
+
+        .mock-tr:last-child {
+            border: none
+        }
+
+        .mock-tr-head {
+            background: rgba(255, 255, 255, .04);
+            color: #6b7280;
+            font-weight: 700;
+            font-size: .6rem
+        }
+
+        .mock-badge {
+            padding: .15rem .5rem;
+            border-radius: 50px;
+            font-size: .55rem;
+            font-weight: 700
+        }
+
+        .mock-badge-green {
+            background: rgba(16, 185, 129, .15);
+            color: var(--green-light)
+        }
+
+        .mock-badge-yellow {
+            background: rgba(245, 158, 11, .15);
+            color: #fbbf24
+        }
+
+        .mock-badge-red {
+            background: rgba(239, 68, 68, .15);
+            color: #f87171
+        }
+
+        .mock-float {
+            position: absolute;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .6rem .9rem;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4)
+        }
+
+        .mock-float1 {
+            bottom: -18px;
+            left: -30px;
+            animation: float 5s ease-in-out infinite
+        }
+
+        .mock-float2 {
+            top: 20px;
+            right: -25px;
+            animation: float 4s ease-in-out 1s infinite
+        }
+
+        .mock-float-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0
+        }
+
+        .mock-float-text {
+            font-size: .7rem
+        }
+
+        .mock-float-text strong {
+            display: block;
+            font-weight: 700;
+            font-size: .75rem
+        }
+
+        .mock-float-text span {
+            color: var(--text2);
+            font-size: .65rem
+        }
+
+        /* PROBLEM SECTION */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem
+        }
+
+        .pain-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            background: rgba(239, 68, 68, .06);
+            border: 1px solid rgba(239, 68, 68, .15);
+            transition: all .3s
+        }
+
+        .pain-item:hover {
+            background: rgba(239, 68, 68, .1);
+            transform: translateX(4px)
+        }
+
+        .pain-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, .15);
+            color: #f87171;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .pain-text strong {
+            display: block;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: .2rem
+        }
+
+        .pain-text span {
+            font-size: .82rem;
+            color: var(--text2)
+        }
+
+        .solution-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            position: relative
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 48px;
+            bottom: -24px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--blue), transparent)
+        }
+
+        .step-item:last-child::before {
+            display: none
+        }
+
+        .step-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: .9rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(59, 130, 246, .3)
+        }
+
+        .step-content strong {
+            display: block;
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: .3rem
+        }
+
+        .step-content span {
+            font-size: .85rem;
+            color: var(--text2)
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem
+        }
+
+        .feat-card {
+            padding: 1.75rem;
+            border-radius: 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            transition: all .3s;
+            cursor: default;
+            position: relative;
+            overflow: hidden
+        }
+
+        .feat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(59, 130, 246, .04));
+            opacity: 0;
+            transition: opacity .3s
+        }
+
+        .feat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, .3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .3)
+        }
+
+        .feat-card:hover::before {
+            opacity: 1
+        }
+
+        .feat-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block
+        }
+
+        .feat-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: .5rem
+        }
+
+        .feat-desc {
+            font-size: .85rem;
+            color: var(--text2);
+            line-height: 1.65
+        }
+
+        .feat-tag {
+            display: inline-block;
+            margin-top: .75rem;
+            padding: .25rem .6rem;
+            border-radius: 50px;
+            font-size: .7rem;
+            font-weight: 700;
+            background: rgba(59, 130, 246, .1);
+            color: var(--blue-light);
+            border: 1px solid rgba(59, 130, 246, .2)
+        }
+
+        /* DEMO SECTION */
+        .demo-wrap {
+            margin-top: 3rem;
+            position: relative
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: .5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .demo-tab {
+            padding: .5rem 1.1rem;
+            border-radius: 50px;
+            font-size: .82rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text2);
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .demo-tab.active {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue)
+        }
+
+        .demo-screen {
+            display: none
+        }
+
+        .demo-screen.active {
+            display: block
+        }
+
+        .demo-cta-box {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 2rem;
+            border-radius: 16px;
+            background: rgba(59, 130, 246, .06);
+            border: 1px dashed rgba(59, 130, 246, .3)
+        }
+
+        /* PRICING */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            align-items: start
+        }
+
+        .price-card {
+            padding: 2rem;
+            border-radius: 20px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            position: relative
+        }
+
+        .price-card.featured {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 1px var(--blue), 0 30px 60px rgba(59, 130, 246, .15);
+            transform: scale(1.03)
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            color: #fff;
+            padding: .3rem 1.1rem;
+            border-radius: 50px;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            white-space: nowrap
+        }
+
+        .price-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .3rem
+        }
+
+        .price-desc {
+            font-size: .82rem;
+            color: var(--text2);
+            margin-bottom: 1.5rem
+        }
+
+        .price-amount {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: .25rem
+        }
+
+        .price-amount sup {
+            font-size: 1.2rem;
+            vertical-align: top;
+            margin-top: .5rem;
+            font-weight: 700;
+            color: var(--text2)
+        }
+
+        .price-period {
+            font-size: .82rem;
+            color: var(--text3);
+            margin-bottom: 1.5rem
+        }
+
+        .price-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+            margin-bottom: 1.75rem
+        }
+
+        .price-features li {
+            font-size: .85rem;
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            color: var(--text2)
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 800;
+            flex-shrink: 0
+        }
+
+        .price-features li.disabled {
+            color: var(--text3)
+        }
+
+        .price-features li.disabled::before {
+            content: '✕';
+            color: var(--text3)
+        }
+
+        .price-btn {
+            width: 100%;
+            padding: .9rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .25s;
+            border: none;
+            text-align: center;
+            display: block
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem
+        }
+
+        .testi-card {
+            padding: 1.75rem;
+            border-radius: 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            transition: all .3s
+        }
+
+        .testi-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, .2)
+        }
+
+        .testi-stars {
+            color: #f59e0b;
+            font-size: 1rem;
+            margin-bottom: .75rem;
+            letter-spacing: .1em
+        }
+
+        .testi-text {
+            font-size: .9rem;
+            line-height: 1.7;
+            color: var(--text2);
+            margin-bottom: 1.25rem;
+            font-style: italic
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: .75rem
+        }
+
+        .testi-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0
+        }
+
+        .testi-name {
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        .testi-role {
+            font-size: .78rem;
+            color: var(--text3)
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 750px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem
+        }
+
+        .faq-item {
+            border-radius: 12px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color .2s
+        }
+
+        .faq-item.open {
+            border-color: rgba(59, 130, 246, .3)
+        }
+
+        .faq-q {
+            padding: 1.1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform .3s;
+            font-size: 1rem
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .faq-a {
+            display: none;
+            padding: 0 1.5rem 1.25rem;
+            font-size: .88rem;
+            color: var(--text2);
+            line-height: 1.7
+        }
+
+        .faq-item.open .faq-a {
+            display: block
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, .08), rgba(16, 185, 129, .08));
+            pointer-events: none
+        }
+
+        .cta-box {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative
+        }
+
+        .cta-urgency {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            background: rgba(239, 68, 68, .1);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #f87171;
+            font-size: .8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1rem
+        }
+
+        .cta-sub {
+            color: var(--text2);
+            font-size: 1rem;
+            margin-bottom: 2.5rem
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem
+        }
+
+        .cta-fine {
+            font-size: .78rem;
+            color: var(--text3)
+        }
+
+        /* TECH STRIP */
+        .tech-strip {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--glass)
+        }
+
+        .tech-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text3)
+        }
+
+        .tech-item span {
+            font-size: 1.1rem
+        }
+
+        /* STATS STRIP */
+        .stats-strip {
+            padding: 4rem 0
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center
+        }
+
+        .stat-val {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--blue-light), var(--green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1
+        }
+
+        .stat-lbl {
+            font-size: .85rem;
+            color: var(--text2);
+            margin-top: .3rem
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem
+        }
+
+        .footer-brand p {
+            font-size: .85rem;
+            color: var(--text2);
+            margin-top: .75rem;
+            line-height: 1.6
+        }
+
+        .footer-col h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text)
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem
+        }
+
+        .footer-col ul li a {
+            font-size: .82rem;
+            color: var(--text3);
+            transition: color .2s
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--text)
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: .78rem;
+            color: var(--text3)
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+
+            .hero-sub {
+                margin: 0 auto 2rem
+            }
+
+            .hero-btns {
+                justify-content: center
+            }
+
+            .hero-trust {
+                justify-content: center
+            }
+
+            .mockup-wrap {
+                display: none
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr
+            }
+
+            .price-card.featured {
+                transform: none
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: .5rem;
+                text-align: center
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+        }
+
+        @media(max-width:600px) {
+            .features-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .cta-btns .btn {
+                width: 100%;
+                justify-content: center
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<header id="navbar">
-<div class="container">
-<div class="nav-inner">
-<a href="#" class="nav-logo">
-<div class="nav-logo-icon">🪵</div>
-<span>Fabrizio<span style="color:var(--text3);font-weight:400">Admin</span></span>
-</a>
-<ul class="nav-links">
-<li><a href="#caracteristicas">Características</a></li>
-<li><a href="#precios">Precios</a></li>
-<li><a href="#testimonios">Testimonios</a></li>
-<li><a href="#faq">FAQ</a></li>
-</ul>
-<div class="nav-cta">
-<a href="#contacto" class="btn btn-secondary" style="padding:.6rem 1.2rem;font-size:.85rem">Hablar por WhatsApp</a>
-<a href="#precios" class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.85rem">Empezá Gratis 🚀</a>
-</div>
-<div class="hamburger" id="hamburger" onclick="toggleMenu()">
-<span></span><span></span><span></span>
-</div>
-</div>
-<nav id="mobile-nav">
-<a href="#caracteristicas" onclick="toggleMenu()">Características</a>
-<a href="#precios" onclick="toggleMenu()">Precios</a>
-<a href="#testimonios" onclick="toggleMenu()">Testimonios</a>
-<a href="#faq" onclick="toggleMenu()">FAQ</a>
-<a href="#precios" onclick="toggleMenu()" style="color:var(--blue-light);font-weight:700">🚀 Empezá Gratis</a>
-</nav>
-</div>
-</header>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-icon">🔧</div>
+                    <span>Taller<span style="color:var(--blue-light);font-weight:900">PRO</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="#contacto" class="btn btn-secondary" style="padding:.6rem 1.2rem;font-size:.85rem">Hablar
+                        por WhatsApp</a>
+                    <a href="#precios" class="btn btn-primary" style="padding:.6rem 1.2rem;font-size:.85rem">Empezá
+                        Gratis 🚀</a>
+                </div>
+                <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <nav id="mobile-nav">
+                <a href="#caracteristicas" onclick="toggleMenu()">Características</a>
+                <a href="#demo" onclick="toggleMenu()">Demo</a>
+                <a href="#precios" onclick="toggleMenu()">Precios</a>
+                <a href="#faq" onclick="toggleMenu()">FAQ</a>
+                <a href="#precios" onclick="toggleMenu()" style="color:var(--blue-light);font-weight:700">🚀 Empezá
+                    Gratis</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- HERO -->
-<section class="hero">
-<div class="hero-glow1"></div>
-<div class="hero-glow2"></div>
-<div class="container">
-<div class="hero-grid">
-<div class="animate-[fadeInUp_1s_ease-out]">
-<div class="hero-badge">
-<span class="hero-badge-dot"></span>
-Ya usado en carpinterías reales de Argentina 🇦🇷
-</div>
-<h1 class="hero-title">
-El sistema que te ayuda a <span class="gradient-text">cobrar más, gastar menos</span> y no perder ningún cliente
-</h1>
-<p class="hero-sub">El CRM diseñado exclusivamente para carpinterías y fábricas de muebles argentinas. Gestioná presupuestos, clientes, proveedores y gastos — todo desde un solo lugar, sin complicaciones.</p>
-<div class="hero-btns">
-<a href="#precios" class="btn btn-primary btn-lg">Empezá Gratis — Sin Tarjeta 🚀</a>
-<a href="#demo" class="btn btn-secondary btn-lg">▶ Ver la Demo Real</a>
-</div>
-<div class="hero-trust">
-<div class="hero-trust-avatars">
-<span>JG</span><span>MR</span><span>LP</span><span>CR</span>
-</div>
-<span>+50 carpinteros ya lo usan · <strong style="color:var(--green-light)">★★★★★</strong></span>
-</div>
-</div>
-<!-- MOCKUP -->
-<div class="mockup-wrap floating">
-<div class="mockup-window">
-<div class="mockup-bar">
-<div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-<div class="mockup-url">fabriziadmin.app/dashboard</div>
-</div>
-<div class="mockup-body">
-<div class="mock-sidebar">
-<div class="mock-sidebar-logo">🪵 F. Admin</div>
-<div class="mock-nav-item active">🏠 Dashboard</div>
-<div class="mock-nav-item">👥 Clientes</div>
-<div class="mock-nav-item">📄 Cotizador</div>
-<div class="mock-nav-item">📋 Precios</div>
-<div class="mock-nav-item">🚛 Proveedores</div>
-<div class="mock-nav-item">🧾 Gastos</div>
-<div class="mock-nav-item">📊 Estadísticas</div>
-</div>
-<div class="mock-main">
-<div class="mock-stats">
-<div class="mock-stat"><div class="mock-stat-lbl">Cobros Pend.</div><div class="mock-stat-val" style="color:#f87171">$284k</div></div>
-<div class="mock-stat"><div class="mock-stat-lbl">Ingresos Mes</div><div class="mock-stat-val" style="color:var(--green-light)">$1.2M</div></div>
-<div class="mock-stat"><div class="mock-stat-lbl">Clientes</div><div class="mock-stat-val">47</div></div>
-</div>
-<div class="mock-table">
-<div class="mock-tr mock-tr-head"><span style="flex:2">Cliente</span><span style="flex:1.5">Monto</span><span style="flex:1">Estado</span></div>
-<div class="mock-tr"><span style="flex:2;font-size:.65rem">Familia Rodríguez</span><span style="flex:1.5;color:#f87171;font-size:.7rem;font-weight:700">$85.000</span><span style="flex:1"><span class="mock-badge mock-badge-yellow">Pendiente</span></span></div>
-<div class="mock-tr"><span style="flex:2;font-size:.65rem">González J.</span><span style="flex:1.5;color:var(--green-light);font-size:.7rem;font-weight:700">$142.000</span><span style="flex:1"><span class="mock-badge mock-badge-green">Aceptado</span></span></div>
-<div class="mock-tr"><span style="flex:2;font-size:.65rem">Martínez y H.</span><span style="flex:1.5;color:#f87171;font-size:.7rem;font-weight:700">$57.000</span><span style="flex:1"><span class="mock-badge mock-badge-red">Debe</span></span></div>
-</div>
-</div>
-</div>
-</div>
-<div class="mock-float mock-float1">
-<div class="mock-float-icon" style="background:rgba(16,185,129,.15)">✅</div>
-<div class="mock-float-text">
-<strong>Presupuesto Enviado</strong>
-<span>Cocina Roble — Familia López</span>
-</div>
-</div>
-<div class="mock-float mock-float2">
-<div class="mock-float-icon" style="background:rgba(59,130,246,.15)">📄</div>
-<div class="mock-float-text">
-<strong>PDF Generado</strong>
-<span>$215.000 · hace 2 min</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-glow1"></div>
+        <div class="hero-glow2"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="animate-[fadeInUp_1s_ease-out]">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        El CRM pensado para carpinterías argentinas 🇦🇷
+                    </div>
+                    <h1 class="hero-title">
+                        El sistema que te ayuda a <span class="gradient-text">cobrar más, gastar menos</span> y no
+                        perder ningún cliente
+                    </h1>
+                    <p class="hero-sub">TallerPRO es el CRM diseñado exclusivamente para carpinterías y fábricas de
+                        muebles. Gestioná presupuestos, clientes, proveedores y gastos — todo desde un solo lugar, sin
+                        complicaciones.</p>
+                    <div class="hero-btns">
+                        <a href="#precios" class="btn btn-primary btn-lg">Empezá Gratis — Sin Tarjeta 🚀</a>
+                        <a href="#demo" class="btn btn-secondary btn-lg">▶ Ver la Demo Real</a>
+                    </div>
+                    <div class="hero-trust">
+                        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+                            <span
+                                style="display:inline-flex;align-items:center;gap:.35rem;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25);border-radius:50px;padding:.3rem .75rem;font-size:.72rem;font-weight:700;color:var(--blue-light)">☁️
+                                100% en la nube</span>
+                            <span
+                                style="display:inline-flex;align-items:center;gap:.35rem;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:50px;padding:.3rem .75rem;font-size:.72rem;font-weight:700;color:var(--green-light)">📱
+                                Funciona en celular</span>
+                            <span
+                                style="display:inline-flex;align-items:center;gap:.35rem;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25);border-radius:50px;padding:.3rem .75rem;font-size:.72rem;font-weight:700;color:var(--blue-light)">📄
+                                PDF profesionales</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- MOCKUP -->
+                <div class="mockup-wrap floating">
+                    <div class="mockup-window">
+                        <div class="mockup-bar">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                            <div class="mockup-url">tallerpro.app/dashboard</div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mock-sidebar">
+                                <div class="mock-sidebar-logo">🔧 TallerPRO</div>
+                                <div class="mock-nav-item active">🏠 Dashboard</div>
+                                <div class="mock-nav-item">👥 Clientes</div>
+                                <div class="mock-nav-item">📄 Cotizador</div>
+                                <div class="mock-nav-item">📋 Precios</div>
+                                <div class="mock-nav-item">🚛 Proveedores</div>
+                                <div class="mock-nav-item">🧾 Gastos</div>
+                                <div class="mock-nav-item">📊 Estadísticas</div>
+                            </div>
+                            <div class="mock-main">
+                                <div class="mock-stats">
+                                    <div class="mock-stat">
+                                        <div class="mock-stat-lbl">Cobros Pend.</div>
+                                        <div class="mock-stat-val" style="color:#f87171">$284k</div>
+                                    </div>
+                                    <div class="mock-stat">
+                                        <div class="mock-stat-lbl">Ingresos Mes</div>
+                                        <div class="mock-stat-val" style="color:var(--green-light)">$1.2M</div>
+                                    </div>
+                                    <div class="mock-stat">
+                                        <div class="mock-stat-lbl">Clientes</div>
+                                        <div class="mock-stat-val">47</div>
+                                    </div>
+                                </div>
+                                <div class="mock-table">
+                                    <div class="mock-tr mock-tr-head"><span style="flex:2">Cliente</span><span
+                                            style="flex:1.5">Monto</span><span style="flex:1">Estado</span></div>
+                                    <div class="mock-tr"><span style="flex:2;font-size:.65rem">Familia
+                                            Rodríguez</span><span
+                                            style="flex:1.5;color:#f87171;font-size:.7rem;font-weight:700">$85.000</span><span
+                                            style="flex:1"><span
+                                                class="mock-badge mock-badge-yellow">Pendiente</span></span></div>
+                                    <div class="mock-tr"><span style="flex:2;font-size:.65rem">González J.</span><span
+                                            style="flex:1.5;color:var(--green-light);font-size:.7rem;font-weight:700">$142.000</span><span
+                                            style="flex:1"><span
+                                                class="mock-badge mock-badge-green">Aceptado</span></span></div>
+                                    <div class="mock-tr"><span style="flex:2;font-size:.65rem">Martínez y H.</span><span
+                                            style="flex:1.5;color:#f87171;font-size:.7rem;font-weight:700">$57.000</span><span
+                                            style="flex:1"><span class="mock-badge mock-badge-red">Debe</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-float mock-float1">
+                        <div class="mock-float-icon" style="background:rgba(16,185,129,.15)">✅</div>
+                        <div class="mock-float-text">
+                            <strong>Presupuesto Enviado</strong>
+                            <span>Cocina Roble — Familia López</span>
+                        </div>
+                    </div>
+                    <div class="mock-float mock-float2">
+                        <div class="mock-float-icon" style="background:rgba(59,130,246,.15)">📄</div>
+                        <div class="mock-float-text">
+                            <strong>PDF Generado</strong>
+                            <span>$215.000 · hace 2 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
 
-<!-- STATS STRIP -->
-<section class="stats-strip" style="border-top:1px solid var(--border)">
-<div class="container">
-<div class="stats-grid">
-<div class="anim-fade">
-<div class="stat-val" data-count="500">0</div>
-<div class="stat-lbl">Presupuestos generados</div>
-</div>
-<div class="anim-fade delay-1">
-<div class="stat-val" data-count="50">0</div>
-<div class="stat-lbl">Carpinteros activos</div>
-</div>
-<div class="anim-fade delay-2">
-<div class="stat-val" data-count="98">0</div>
-<div class="stat-lbl">% de satisfacción</div>
-</div>
-<div class="anim-fade delay-3">
-<div class="stat-val" data-count="2">0</div>
-<div class="stat-lbl">Minutos para hacer un presupuesto</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- STATS STRIP -->
+    <section class="stats-strip" style="border-top:1px solid var(--border)">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="anim-fade">
+                    <div class="stat-val" data-count="500">0</div>
+                    <div class="stat-lbl">Presupuestos generados</div>
+                </div>
+                <div class="anim-fade delay-1">
+                    <div class="stat-val" data-count="50">0</div>
+                    <div class="stat-lbl">Carpinteros activos</div>
+                </div>
+                <div class="anim-fade delay-2">
+                    <div class="stat-val" data-count="98">0</div>
+                    <div class="stat-lbl">% de satisfacción</div>
+                </div>
+                <div class="anim-fade delay-3">
+                    <div class="stat-val" data-count="2">0</div>
+                    <div class="stat-lbl">Minutos para hacer un presupuesto</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- PROBLEM / SOLUTION -->
-<section class="section" style="background:rgba(15,31,56,.5);border-top:1px solid var(--border)">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">El Problema</div>
-<h2 class="section-title">¿Te pasa <span class="gradient-text">alguna de estas cosas?</span></h2>
-<p class="section-sub">El día a día de una carpintería está lleno de caos. Nosotros lo convertimos en orden.</p>
-</div>
-<div class="problem-grid">
-<div class="pain-list anim-fade delay-1">
-<div class="pain-item">
-<div class="pain-icon">😰</div>
-<div class="pain-text">
-<strong>No sabés cuánto te deben</strong>
-<span>Clientes que prometieron pagar y ya no recordás el monto exacto ni cuándo fue.</span>
-</div>
-</div>
-<div class="pain-item">
-<div class="pain-icon">📝</div>
-<div class="pain-text">
-<strong>Presupuestos en papel que se pierden</strong>
-<span>Calculás todo a mano, a veces te equivocás, y el cliente pide el documento que ya no encontrás.</span>
-</div>
-</div>
-<div class="pain-item">
-<div class="pain-icon">💸</div>
-<div class="pain-text">
-<strong>No sabés cuánto gastaste este mes</strong>
-<span>El alquiler, los materiales, los servicios... todo mezclado sin poder ver el panorama real del negocio.</span>
-</div>
-</div>
-<div class="pain-item">
-<div class="pain-icon">🚛</div>
-<div class="pain-text">
-<strong>Deudas con proveedores sin orden</strong>
-<span>Comprás a varios proveedores y ya perdiste el hilo de cuánto le debés a cada uno.</span>
-</div>
-</div>
-</div>
-<div class="solution-steps anim-fade delay-2">
-<div style="margin-bottom:1.5rem">
-<div class="section-label">La Solución</div>
-<h3 style="font-size:1.7rem;font-weight:800;line-height:1.2">Con Fabrizio Admin, todo bajo control en 3 pasos simples</h3>
-</div>
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content">
-<strong>Cargá tus clientes y presupuestos</strong>
-<span>En minutos tenés el historial completo de cada cliente: qué presupuestaste, qué pagó, qué debe.</span>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content">
-<strong>Registrá gastos y proveedores</strong>
-<span>Cada costo operativo y deuda de proveedor queda registrado. El sistema te muestra las alertas urgentes.</span>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content">
-<strong>Tomá decisiones con datos reales</strong>
-<span>Las estadísticas visuales te dicen en segundos cómo va tu negocio y dónde mejorar.</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- PROBLEM / SOLUTION -->
+    <section class="section" style="background:rgba(15,31,56,.5);border-top:1px solid var(--border)">
+        <div class="container">
+            <div class="text-center anim-fade">
+                <div class="section-label">El Problema</div>
+                <h2 class="section-title">¿Te pasa <span class="gradient-text">alguna de estas cosas?</span></h2>
+                <p class="section-sub">El día a día de una carpintería está lleno de caos. Nosotros lo convertimos en
+                    orden.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="pain-list anim-fade delay-1">
+                    <div class="pain-item">
+                        <div class="pain-icon">😰</div>
+                        <div class="pain-text">
+                            <strong>No sabés cuánto te deben</strong>
+                            <span>Clientes que prometieron pagar y ya no recordás el monto exacto ni cuándo fue.</span>
+                        </div>
+                    </div>
+                    <div class="pain-item">
+                        <div class="pain-icon">📝</div>
+                        <div class="pain-text">
+                            <strong>Presupuestos en papel que se pierden</strong>
+                            <span>Calculás todo a mano, a veces te equivocás, y el cliente pide el documento que ya no
+                                encontrás.</span>
+                        </div>
+                    </div>
+                    <div class="pain-item">
+                        <div class="pain-icon">💸</div>
+                        <div class="pain-text">
+                            <strong>No sabés cuánto gastaste este mes</strong>
+                            <span>El alquiler, los materiales, los servicios... todo mezclado sin poder ver el panorama
+                                real del negocio.</span>
+                        </div>
+                    </div>
+                    <div class="pain-item">
+                        <div class="pain-icon">🚛</div>
+                        <div class="pain-text">
+                            <strong>Deudas con proveedores sin orden</strong>
+                            <span>Comprás a varios proveedores y ya perdiste el hilo de cuánto le debés a cada
+                                uno.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-steps anim-fade delay-2">
+                    <div style="margin-bottom:1.5rem">
+                        <div class="section-label">La Solución</div>
+                        <h3 style="font-size:1.7rem;font-weight:800;line-height:1.2">Con Fabrizio Admin, todo bajo
+                            control en 3 pasos simples</h3>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong>Cargá tus clientes y presupuestos</strong>
+                            <span>En minutos tenés el historial completo de cada cliente: qué presupuestaste, qué pagó,
+                                qué debe.</span>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong>Registrá gastos y proveedores</strong>
+                            <span>Cada costo operativo y deuda de proveedor queda registrado. El sistema te muestra las
+                                alertas urgentes.</span>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong>Tomá decisiones con datos reales</strong>
+                            <span>Las estadísticas visuales te dicen en segundos cómo va tu negocio y dónde
+                                mejorar.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FEATURES -->
-<section id="caracteristicas" class="section">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">Módulos del Sistema</div>
-<h2 class="section-title">Todo lo que tu carpintería <span class="gradient-text">necesita</span></h2>
-<p class="section-sub">7 módulos integrados, pensados para la realidad de un taller argentino.</p>
-</div>
-<div class="features-grid">
-<div class="feat-card anim-fade delay-1">
-<span class="feat-icon">💰</span>
-<div class="feat-title">Nunca más perdas un cobro</div>
-<div class="feat-desc">El Dashboard te muestra en segundos quién te debe, cuánto, y pone al tope las deudas más grandes. Cero llamadas al cuaderno.</div>
-<span class="feat-tag">🏠 Dashboard Inteligente</span>
-</div>
-<div class="feat-card anim-fade delay-2">
-<span class="feat-icon">👥</span>
-<div class="feat-title">Todos tus clientes organizados</div>
-<div class="feat-desc">Nombre, WhatsApp, obra, pagos, presupuestos y archivos adjuntos. Un click y abrís el chat o abrís el mapa para ir a la obra.</div>
-<span class="feat-tag">👥 Gestión de Clientes</span>
-</div>
-<div class="feat-card anim-fade delay-3">
-<span class="feat-icon">📄</span>
-<div class="feat-title">Presupuestos PDF en 2 minutos</div>
-<div class="feat-desc">Elegís los ítems, el sistema calcula solo y genera un PDF profesional con tu logo listo para mandar por WhatsApp.</div>
-<span class="feat-tag">📄 Cotizador Profesional</span>
-</div>
-<div class="feat-card anim-fade delay-1">
-<span class="feat-icon">🚛</span>
-<div class="feat-title">Controlá lo que debés a tus proveedores</div>
-<div class="feat-desc">Registrá tus compras, adjuntá los remitos y llevá el historial exacto de pagos a cada proveedor. Sin sorpresas.</div>
-<span class="feat-tag">🚛 Gestión de Proveedores</span>
-</div>
-<div class="feat-card anim-fade delay-2">
-<span class="feat-icon">📊</span>
-<div class="feat-title">Sabé exactamente cómo va tu negocio</div>
-<div class="feat-desc">Gráficos visuales de ingresos, egresos, costos operativos y rentabilidad. Tomá decisiones con datos reales, no con intuición.</div>
-<span class="feat-tag">📊 Estadísticas Visuales</span>
-</div>
-<div class="feat-card anim-fade delay-3">
-<span class="feat-icon">☁️</span>
-<div class="feat-title">Desde cualquier dispositivo, sin instalar nada</div>
-<div class="feat-desc">Corre en el navegador, funciona en el celular y en la PC. Tus datos siempre seguros en la nube con Supabase.</div>
-<span class="feat-tag">☁️ Cloud + PWA</span>
-</div>
-</div>
-</div>
-</section>
+    <!-- FEATURES -->
+    <section id="caracteristicas" class="section">
+        <div class="container">
+            <div class="text-center anim-fade">
+                <div class="section-label">Módulos del Sistema</div>
+                <h2 class="section-title">Todo lo que tu carpintería <span class="gradient-text">necesita</span></h2>
+                <p class="section-sub">7 módulos integrados, pensados para la realidad de un taller argentino.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feat-card anim-fade delay-1">
+                    <span class="feat-icon">💰</span>
+                    <div class="feat-title">Nunca más perdas un cobro</div>
+                    <div class="feat-desc">El Dashboard te muestra en segundos quién te debe, cuánto, y pone al tope las
+                        deudas más grandes. Cero llamadas al cuaderno.</div>
+                    <span class="feat-tag">🏠 Dashboard Inteligente</span>
+                </div>
+                <div class="feat-card anim-fade delay-2">
+                    <span class="feat-icon">👥</span>
+                    <div class="feat-title">Todos tus clientes organizados</div>
+                    <div class="feat-desc">Nombre, WhatsApp, obra, pagos, presupuestos y archivos adjuntos. Un click y
+                        abrís el chat o abrís el mapa para ir a la obra.</div>
+                    <span class="feat-tag">👥 Gestión de Clientes</span>
+                </div>
+                <div class="feat-card anim-fade delay-3">
+                    <span class="feat-icon">📄</span>
+                    <div class="feat-title">Presupuestos PDF en 2 minutos</div>
+                    <div class="feat-desc">Elegís los ítems, el sistema calcula solo y genera un PDF profesional con tu
+                        logo listo para mandar por WhatsApp.</div>
+                    <span class="feat-tag">📄 Cotizador Profesional</span>
+                </div>
+                <div class="feat-card anim-fade delay-1">
+                    <span class="feat-icon">🚛</span>
+                    <div class="feat-title">Controlá lo que debés a tus proveedores</div>
+                    <div class="feat-desc">Registrá tus compras, adjuntá los remitos y llevá el historial exacto de
+                        pagos a cada proveedor. Sin sorpresas.</div>
+                    <span class="feat-tag">🚛 Gestión de Proveedores</span>
+                </div>
+                <div class="feat-card anim-fade delay-2">
+                    <span class="feat-icon">📊</span>
+                    <div class="feat-title">Sabé exactamente cómo va tu negocio</div>
+                    <div class="feat-desc">Gráficos visuales de ingresos, egresos, costos operativos y rentabilidad.
+                        Tomá decisiones con datos reales, no con intuición.</div>
+                    <span class="feat-tag">📊 Estadísticas Visuales</span>
+                </div>
+                <div class="feat-card anim-fade delay-3">
+                    <span class="feat-icon">☁️</span>
+                    <div class="feat-title">Desde cualquier dispositivo, sin instalar nada</div>
+                    <div class="feat-desc">Corre en el navegador, funciona en el celular y en la PC. Tus datos siempre
+                        seguros en la nube con Supabase.</div>
+                    <span class="feat-tag">☁️ Cloud + PWA</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- TECH STRIP -->
-<section class="tech-strip">
-<div class="container">
-<div style="text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:1.25rem">Tecnología de nivel profesional, sin que tengas que saber nada de eso</div>
-<div class="tech-items">
-<div class="tech-item"><span>⚛️</span> React 18</div>
-<div class="tech-item"><span>☁️</span> Supabase Cloud</div>
-<div class="tech-item"><span>📱</span> PWA Ready</div>
-<div class="tech-item"><span>📄</span> jsPDF</div>
-<div class="tech-item"><span>📊</span> Recharts</div>
-<div class="tech-item"><span>🔒</span> Datos 100% seguros</div>
-</div>
-</div>
-</section>
+    <!-- TECH STRIP -->
+    <section class="tech-strip">
+        <div class="container">
+            <div
+                style="text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:1.25rem">
+                Tecnología de nivel profesional, sin que tengas que saber nada de eso</div>
+            <div class="tech-items">
+                <div class="tech-item"><span>⚛️</span> React 18</div>
+                <div class="tech-item"><span>☁️</span> Supabase Cloud</div>
+                <div class="tech-item"><span>📱</span> PWA Ready</div>
+                <div class="tech-item"><span>📄</span> jsPDF</div>
+                <div class="tech-item"><span>📊</span> Recharts</div>
+                <div class="tech-item"><span>🔒</span> Datos 100% seguros</div>
+            </div>
+        </div>
+    </section>
 
-<!-- DEMO SECTION -->
-<section id="demo" class="section" style="background:rgba(15,31,56,.5);border-top:1px solid var(--border)">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">Vista Previa</div>
-<h2 class="section-title">El sistema por <span class="gradient-text">dentro</span></h2>
-<p class="section-sub">Así luce Fabrizio Admin en tu pantalla — limpio, moderno y sin tecnología que te supere.</p>
-</div>
-<div class="demo-wrap anim-fade delay-1">
-<div class="demo-tabs">
-<button class="demo-tab active" onclick="setTab(this,'t1')">🏠 Dashboard</button>
-<button class="demo-tab" onclick="setTab(this,'t2')">👥 Clientes</button>
-<button class="demo-tab" onclick="setTab(this,'t3')">📄 Cotizador</button>
-<button class="demo-tab" onclick="setTab(this,'t4')">📊 Estadísticas</button>
-</div>
+    <!-- DEMO SECTION -->
+    <section id="demo" class="section" style="background:rgba(15,31,56,.5);border-top:1px solid var(--border)">
+        <div class="container">
+            <div class="text-center anim-fade">
+                <div class="section-label">Vista Previa</div>
+                <h2 class="section-title">El sistema por <span class="gradient-text">dentro</span></h2>
+                <p class="section-sub">Así luce Fabrizio Admin en tu pantalla — limpio, moderno y sin tecnología que te
+                    supere.</p>
+            </div>
+            <div class="demo-wrap anim-fade delay-1">
+                <div class="demo-tabs">
+                    <button class="demo-tab active" onclick="setTab(this,'t1')">🏠 Dashboard</button>
+                    <button class="demo-tab" onclick="setTab(this,'t2')">👥 Clientes</button>
+                    <button class="demo-tab" onclick="setTab(this,'t3')">📄 Cotizador</button>
+                    <button class="demo-tab" onclick="setTab(this,'t4')">📊 Estadísticas</button>
+                </div>
 
-<!-- Dashboard tab -->
-<div id="t1" class="demo-screen active">
-<div class="mockup-window" style="max-height:420px;overflow:hidden">
-<div class="mockup-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><div class="mockup-url">fabriziadmin.app/dashboard</div></div>
-<div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
-<div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:1.1rem;font-weight:800">👋 Hola, Fabrizio</span><span style="font-size:.75rem;color:var(--text3)">Lunes 24 Feb · 21:00 hs</span></div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
-<div class="glass" style="padding:1rem;border-radius:12px"><div style="font-size:.72rem;color:var(--text3)">⚠️ Cobros Pendientes</div><div style="font-size:1.6rem;font-weight:900;color:#f87171;margin:.2rem 0">$284.000</div><div style="font-size:.65rem;color:var(--text3)">5 clientes deben</div></div>
-<div class="glass" style="padding:1rem;border-radius:12px"><div style="font-size:.72rem;color:var(--text3)">📈 Ingresos del mes</div><div style="font-size:1.6rem;font-weight:900;color:var(--green-light);margin:.2rem 0">$1.210.000</div><div style="font-size:.65rem;color:var(--text3)">↑ 12% vs. mes anterior</div></div>
-<div class="glass" style="padding:1rem;border-radius:12px"><div style="font-size:.72rem;color:var(--text3)">🚛 Deuda Proveedores</div><div style="font-size:1.6rem;font-weight:900;color:#f59e0b;margin:.2rem 0">$96.000</div><div style="font-size:.65rem;color:var(--text3)">3 proveedores</div></div>
-</div>
-<div class="glass" style="border-radius:12px;overflow:hidden">
-<div style="padding:.75rem 1rem;background:rgba(255,255,255,.03);font-size:.75rem;font-weight:700;border-bottom:1px solid var(--border)">🔔 Alertas — Cobros pendientes por monto</div>
-<div style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04);font-size:.8rem"><span>Familia Rodríguez</span><span style="color:#f87171;font-weight:700">$85.000</span><span class="mock-badge mock-badge-red">URGENTE</span></div>
-<div style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04);font-size:.8rem"><span>Construcciones Pérez</span><span style="color:#f87171;font-weight:700">$73.000</span><span class="mock-badge mock-badge-yellow">Pendiente</span></div>
-<div style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem"><span>Martínez e Hijos</span><span style="color:#f87171;font-weight:700">$57.000</span><span class="mock-badge mock-badge-yellow">Pendiente</span></div>
-</div>
-</div>
-</div>
-</div>
+                <!-- Dashboard tab -->
+                <div id="t1" class="demo-screen active">
+                    <div class="mockup-window" style="max-height:420px;overflow:hidden">
+                        <div class="mockup-bar">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                            <div class="mockup-url">fabriziadmin.app/dashboard</div>
+                        </div>
+                        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
+                            <div style="display:flex;align-items:center;justify-content:space-between"><span
+                                    style="font-size:1.1rem;font-weight:800">👋 Hola, Fabrizio</span><span
+                                    style="font-size:.75rem;color:var(--text3)">Lunes 24 Feb · 21:00 hs</span></div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+                                <div class="glass" style="padding:1rem;border-radius:12px">
+                                    <div style="font-size:.72rem;color:var(--text3)">⚠️ Cobros Pendientes</div>
+                                    <div style="font-size:1.6rem;font-weight:900;color:#f87171;margin:.2rem 0">$284.000
+                                    </div>
+                                    <div style="font-size:.65rem;color:var(--text3)">5 clientes deben</div>
+                                </div>
+                                <div class="glass" style="padding:1rem;border-radius:12px">
+                                    <div style="font-size:.72rem;color:var(--text3)">📈 Ingresos del mes</div>
+                                    <div
+                                        style="font-size:1.6rem;font-weight:900;color:var(--green-light);margin:.2rem 0">
+                                        $1.210.000</div>
+                                    <div style="font-size:.65rem;color:var(--text3)">↑ 12% vs. mes anterior</div>
+                                </div>
+                                <div class="glass" style="padding:1rem;border-radius:12px">
+                                    <div style="font-size:.72rem;color:var(--text3)">🚛 Deuda Proveedores</div>
+                                    <div style="font-size:1.6rem;font-weight:900;color:#f59e0b;margin:.2rem 0">$96.000
+                                    </div>
+                                    <div style="font-size:.65rem;color:var(--text3)">3 proveedores</div>
+                                </div>
+                            </div>
+                            <div class="glass" style="border-radius:12px;overflow:hidden">
+                                <div
+                                    style="padding:.75rem 1rem;background:rgba(255,255,255,.03);font-size:.75rem;font-weight:700;border-bottom:1px solid var(--border)">
+                                    🔔 Alertas — Cobros pendientes por monto</div>
+                                <div
+                                    style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04);font-size:.8rem">
+                                    <span>Familia Rodríguez</span><span
+                                        style="color:#f87171;font-weight:700">$85.000</span><span
+                                        class="mock-badge mock-badge-red">URGENTE</span></div>
+                                <div
+                                    style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04);font-size:.8rem">
+                                    <span>Construcciones Pérez</span><span
+                                        style="color:#f87171;font-weight:700">$73.000</span><span
+                                        class="mock-badge mock-badge-yellow">Pendiente</span></div>
+                                <div
+                                    style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem">
+                                    <span>Martínez e Hijos</span><span
+                                        style="color:#f87171;font-weight:700">$57.000</span><span
+                                        class="mock-badge mock-badge-yellow">Pendiente</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Clientes tab -->
-<div id="t2" class="demo-screen">
-<div class="mockup-window" style="max-height:420px;overflow:hidden">
-<div class="mockup-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><div class="mockup-url">fabriziadmin.app/clientes</div></div>
-<div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
-<div style="display:flex;gap:.75rem;align-items:center;justify-content:space-between"><span style="font-weight:800;font-size:1rem">👥 Clientes (47)</span><button style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:.4rem .9rem;font-size:.75rem;font-weight:700;cursor:pointer">+ Nuevo Cliente</button></div>
-<div style="background:rgba(255,255,255,.04);border-radius:8px;padding:.5rem .75rem;font-size:.78rem;color:var(--text3)">🔍 Buscar cliente o filtrar por deuda...</div>
-<div class="glass" style="border-radius:12px;overflow:hidden">
-<div style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.6rem 1rem;background:rgba(255,255,255,.04);font-size:.68rem;font-weight:700;color:var(--text3)"><span>Cliente</span><span>Localidad</span><span>Saldo</span><span>Estado</span></div>
-<div style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center"><span style="font-weight:600">Familia Rodríguez</span><span style="color:var(--text3)">Junín</span><span style="color:#f87171;font-weight:700">-$85.000</span><span class="mock-badge mock-badge-yellow">Pendiente</span></div>
-<div style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center"><span style="font-weight:600">González J.</span><span style="color:var(--text3)">Lincoln</span><span style="color:var(--green-light);font-weight:700">✓ Pagado</span><span class="mock-badge mock-badge-green">Aceptado</span></div>
-<div style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center"><span style="font-weight:600">López M.</span><span style="color:var(--text3)">Pergamino</span><span style="color:#f87171;font-weight:700">-$57.000</span><span class="mock-badge mock-badge-red">Debe</span></div>
-</div>
-</div>
-</div>
-</div>
+                <!-- Clientes tab -->
+                <div id="t2" class="demo-screen">
+                    <div class="mockup-window" style="max-height:420px;overflow:hidden">
+                        <div class="mockup-bar">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                            <div class="mockup-url">fabriziadmin.app/clientes</div>
+                        </div>
+                        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
+                            <div style="display:flex;gap:.75rem;align-items:center;justify-content:space-between"><span
+                                    style="font-weight:800;font-size:1rem">👥 Clientes (47)</span><button
+                                    style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:.4rem .9rem;font-size:.75rem;font-weight:700;cursor:pointer">+
+                                    Nuevo Cliente</button></div>
+                            <div
+                                style="background:rgba(255,255,255,.04);border-radius:8px;padding:.5rem .75rem;font-size:.78rem;color:var(--text3)">
+                                🔍 Buscar cliente o filtrar por deuda...</div>
+                            <div class="glass" style="border-radius:12px;overflow:hidden">
+                                <div
+                                    style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.6rem 1rem;background:rgba(255,255,255,.04);font-size:.68rem;font-weight:700;color:var(--text3)">
+                                    <span>Cliente</span><span>Localidad</span><span>Saldo</span><span>Estado</span>
+                                </div>
+                                <div
+                                    style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center">
+                                    <span style="font-weight:600">Familia Rodríguez</span><span
+                                        style="color:var(--text3)">Junín</span><span
+                                        style="color:#f87171;font-weight:700">-$85.000</span><span
+                                        class="mock-badge mock-badge-yellow">Pendiente</span></div>
+                                <div
+                                    style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center">
+                                    <span style="font-weight:600">González J.</span><span
+                                        style="color:var(--text3)">Lincoln</span><span
+                                        style="color:var(--green-light);font-weight:700">✓ Pagado</span><span
+                                        class="mock-badge mock-badge-green">Aceptado</span></div>
+                                <div
+                                    style="display:grid;grid-template-columns:2fr 1.5fr 1.5fr 1fr;gap:.5rem;padding:.65rem 1rem;border-top:1px solid rgba(255,255,255,.04);font-size:.77rem;align-items:center">
+                                    <span style="font-weight:600">López M.</span><span
+                                        style="color:var(--text3)">Pergamino</span><span
+                                        style="color:#f87171;font-weight:700">-$57.000</span><span
+                                        class="mock-badge mock-badge-red">Debe</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Cotizador tab -->
-<div id="t3" class="demo-screen">
-<div class="mockup-window" style="max-height:420px;overflow:hidden">
-<div class="mockup-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><div class="mockup-url">fabriziadmin.app/cotizador</div></div>
-<div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
-<div style="font-weight:800;font-size:1rem">📄 Nuevo Presupuesto</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-<div style="font-size:.75rem"><div style="color:var(--text3);margin-bottom:.25rem">Cliente</div><div style="background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;font-size:.8rem">Familia Rodríguez</div></div>
-<div style="font-size:.75rem"><div style="color:var(--text3);margin-bottom:.25rem">Fecha</div><div style="background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;font-size:.8rem">24/02/2026</div></div>
-</div>
-<div class="glass" style="border-radius:12px;overflow:hidden">
-<div style="padding:.6rem 1rem;background:rgba(255,255,255,.04);font-size:.68rem;font-weight:700;color:var(--text3);display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr">
-<span>Ítem / Descripción</span><span>Cant.</span><span>P. Unit.</span><span>Total</span>
-</div>
-<div style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)"><span>Mueble bajo melamina roble</span><span>2</span><span>$45.000</span><span style="font-weight:700">$90.000</span></div>
-<div style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)"><span>Alzada backsplash</span><span>1</span><span>$28.000</span><span style="font-weight:700">$28.000</span></div>
-<div style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)"><span>Mano de obra e instalación</span><span>1</span><span>$55.000</span><span style="font-weight:700">$55.000</span></div>
-<div style="padding:.75rem 1rem;background:rgba(59,130,246,.08);border-top:1px solid rgba(59,130,246,.2);display:flex;justify-content:flex-end;gap:1rem;align-items:center"><span style="font-size:.75rem;color:var(--text2)">TOTAL:</span><span style="font-size:1.1rem;font-weight:900;color:var(--blue-light)">$173.000</span></div>
-</div>
-<button style="background:var(--blue);color:#fff;border:none;border-radius:10px;padding:.65rem 1.5rem;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;width:fit-content">📥 Generar PDF y Enviar por WhatsApp</button>
-</div>
-</div>
-</div>
+                <!-- Cotizador tab -->
+                <div id="t3" class="demo-screen">
+                    <div class="mockup-window" style="max-height:420px;overflow:hidden">
+                        <div class="mockup-bar">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                            <div class="mockup-url">fabriziadmin.app/cotizador</div>
+                        </div>
+                        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
+                            <div style="font-weight:800;font-size:1rem">📄 Nuevo Presupuesto</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+                                <div style="font-size:.75rem">
+                                    <div style="color:var(--text3);margin-bottom:.25rem">Cliente</div>
+                                    <div
+                                        style="background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;font-size:.8rem">
+                                        Familia Rodríguez</div>
+                                </div>
+                                <div style="font-size:.75rem">
+                                    <div style="color:var(--text3);margin-bottom:.25rem">Fecha</div>
+                                    <div
+                                        style="background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;font-size:.8rem">
+                                        24/02/2026</div>
+                                </div>
+                            </div>
+                            <div class="glass" style="border-radius:12px;overflow:hidden">
+                                <div
+                                    style="padding:.6rem 1rem;background:rgba(255,255,255,.04);font-size:.68rem;font-weight:700;color:var(--text3);display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr">
+                                    <span>Ítem / Descripción</span><span>Cant.</span><span>P.
+                                        Unit.</span><span>Total</span>
+                                </div>
+                                <div
+                                    style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)">
+                                    <span>Mueble bajo melamina roble</span><span>2</span><span>$45.000</span><span
+                                        style="font-weight:700">$90.000</span></div>
+                                <div
+                                    style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)">
+                                    <span>Alzada backsplash</span><span>1</span><span>$28.000</span><span
+                                        style="font-weight:700">$28.000</span></div>
+                                <div
+                                    style="padding:.6rem 1rem;font-size:.76rem;display:grid;grid-template-columns:3fr 1fr 1.5fr 1fr;border-top:1px solid rgba(255,255,255,.04)">
+                                    <span>Mano de obra e instalación</span><span>1</span><span>$55.000</span><span
+                                        style="font-weight:700">$55.000</span></div>
+                                <div
+                                    style="padding:.75rem 1rem;background:rgba(59,130,246,.08);border-top:1px solid rgba(59,130,246,.2);display:flex;justify-content:flex-end;gap:1rem;align-items:center">
+                                    <span style="font-size:.75rem;color:var(--text2)">TOTAL:</span><span
+                                        style="font-size:1.1rem;font-weight:900;color:var(--blue-light)">$173.000</span>
+                                </div>
+                            </div>
+                            <button
+                                style="background:var(--blue);color:#fff;border:none;border-radius:10px;padding:.65rem 1.5rem;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;width:fit-content">📥
+                                Generar PDF y Enviar por WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Stats tab -->
-<div id="t4" class="demo-screen">
-<div class="mockup-window" style="max-height:420px;overflow:hidden">
-<div class="mockup-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><div class="mockup-url">fabriziadmin.app/estadisticas</div></div>
-<div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
-<div style="font-weight:800;font-size:1rem">📊 Estadísticas del Negocio</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem">
-<div class="glass" style="border-radius:12px;padding:1rem"><div style="font-size:.72rem;color:var(--text3);margin-bottom:.5rem">Ingresos vs Gastos (últimos 6 meses)</div>
-<div style="display:flex;align-items:flex-end;gap:.4rem;height:80px">
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:60%"></div><div style="font-size:.55rem;color:var(--text3)">Sep</div></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:75%"></div><div style="font-size:.55rem;color:var(--text3)">Oct</div></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%"></div><div style="font-size:.55rem;color:var(--text3)">Nov</div></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:90%"></div><div style="font-size:.55rem;color:var(--text3)">Dic</div></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:80%"></div><div style="font-size:.55rem;color:var(--text3)">Ene</div></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1"><div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:100%"></div><div style="font-size:.55rem;color:var(--text3)">Feb</div></div>
-</div>
-</div>
-<div class="glass" style="border-radius:12px;padding:1rem"><div style="font-size:.72rem;color:var(--text3);margin-bottom:.5rem">Top Costos Operativos</div>
-<div style="display:flex;flex-direction:column;gap:.4rem">
-<div><div style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem"><span>Alquiler</span><span style="color:var(--text2)">$82.000</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="height:100%;width:70%;background:var(--blue);border-radius:3px"></div></div></div>
-<div><div style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem"><span>Materiales</span><span style="color:var(--text2)">$64.000</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="height:100%;width:55%;background:var(--green);border-radius:3px"></div></div></div>
-<div><div style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem"><span>Servicios</span><span style="color:var(--text2)">$28.000</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="height:100%;width:24%;background:#f59e0b;border-radius:3px"></div></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                <!-- Stats tab -->
+                <div id="t4" class="demo-screen">
+                    <div class="mockup-window" style="max-height:420px;overflow:hidden">
+                        <div class="mockup-bar">
+                            <div class="dot dot-r"></div>
+                            <div class="dot dot-y"></div>
+                            <div class="dot dot-g"></div>
+                            <div class="mockup-url">fabriziadmin.app/estadisticas</div>
+                        </div>
+                        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
+                            <div style="font-weight:800;font-size:1rem">📊 Estadísticas del Negocio</div>
+                            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem">
+                                <div class="glass" style="border-radius:12px;padding:1rem">
+                                    <div style="font-size:.72rem;color:var(--text3);margin-bottom:.5rem">Ingresos vs
+                                        Gastos (últimos 6 meses)</div>
+                                    <div style="display:flex;align-items:flex-end;gap:.4rem;height:80px">
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:60%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Sep</div>
+                                        </div>
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:75%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Oct</div>
+                                        </div>
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Nov</div>
+                                        </div>
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:90%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Dic</div>
+                                        </div>
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:80%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Ene</div>
+                                        </div>
+                                        <div
+                                            style="display:flex;flex-direction:column;align-items:center;gap:.2rem;flex:1">
+                                            <div
+                                                style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:100%">
+                                            </div>
+                                            <div style="font-size:.55rem;color:var(--text3)">Feb</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="glass" style="border-radius:12px;padding:1rem">
+                                    <div style="font-size:.72rem;color:var(--text3);margin-bottom:.5rem">Top Costos
+                                        Operativos</div>
+                                    <div style="display:flex;flex-direction:column;gap:.4rem">
+                                        <div>
+                                            <div
+                                                style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem">
+                                                <span>Alquiler</span><span style="color:var(--text2)">$82.000</span>
+                                            </div>
+                                            <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px">
+                                                <div
+                                                    style="height:100%;width:70%;background:var(--blue);border-radius:3px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div
+                                                style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem">
+                                                <span>Materiales</span><span style="color:var(--text2)">$64.000</span>
+                                            </div>
+                                            <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px">
+                                                <div
+                                                    style="height:100%;width:55%;background:var(--green);border-radius:3px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div
+                                                style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.15rem">
+                                                <span>Servicios</span><span style="color:var(--text2)">$28.000</span>
+                                            </div>
+                                            <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px">
+                                                <div style="height:100%;width:24%;background:#f59e0b;border-radius:3px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="demo-cta-box anim-fade delay-2">
-<p style="font-size:1.1rem;font-weight:700;margin-bottom:.75rem">¿Querés verlo en tu carpintería? <span style="color:var(--green-light)">🎯</span></p>
-<p style="color:var(--text2);font-size:.88rem;margin-bottom:1.25rem">Armamos una demo personalizada con tus datos reales en menos de 24 hs.</p>
-<a href="https://wa.me/542364724515?text=Hola%21+Quiero+ver+una+demo+de+Fabrizio+Admin+para+mi+carpinter%C3%ADa." target="_blank" class="btn btn-green">📲 Pedí tu Demo por WhatsApp</a>
-</div>
-</div>
-</div>
-</section>
+                <div class="demo-cta-box anim-fade delay-2">
+                    <p style="font-size:1.1rem;font-weight:700;margin-bottom:.75rem">¿Querés verlo en tu carpintería?
+                        <span style="color:var(--green-light)">🎯</span></p>
+                    <p style="color:var(--text2);font-size:.88rem;margin-bottom:1.25rem">Armamos una demo personalizada
+                        con tus datos reales en menos de 24 hs.</p>
+                    <a href="https://wa.me/542364724515?text=Hola%21+Quiero+ver+una+demo+de+Fabrizio+Admin+para+mi+carpinter%C3%ADa."
+                        target="_blank" class="btn btn-green">📲 Pedí tu Demo por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- PRICING -->
-<section id="precios" class="section">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">Planes y Precios</div>
-<h2 class="section-title">Invertí menos de lo que gana <span class="gradient-text">un presupuesto bien cerrado</span></h2>
-<p class="section-sub">Precios en pesos argentinos. Sin letra chica. Cancelás cuando querés.</p>
-</div>
-<div class="pricing-grid anim-fade delay-1">
-<!-- FREE -->
-<div class="price-card">
-<div class="price-name">Plan Gratuito</div>
-<div class="price-desc">Para arrancar y probar sin riesgo</div>
-<div class="price-amount">$0<sup></sup></div>
-<div class="price-period">Para siempre gratis</div>
-<ul class="price-features">
-<li>Hasta 10 clientes</li>
-<li>Hasta 15 presupuestos por mes</li>
-<li>Dashboard de alertas</li>
-<li>Gestión básica de gastos</li>
-<li class="disabled">Proveedores y deudas</li>
-<li class="disabled">Estadísticas avanzadas</li>
-<li class="disabled">Adjuntar archivos</li>
-</ul>
-<a href="#contacto" class="price-btn" style="background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--border)">Empezar Gratis</a>
-</div>
-<!-- PRO -->
-<div class="price-card featured">
-<div class="price-badge">⭐ MÁS POPULAR</div>
-<div class="price-name">Plan PRO</div>
-<div class="price-desc">Para carpinterías que van en serio</div>
-<div class="price-amount"><sup>$</sup>9.900</div>
-<div class="price-period">por mes · en pesos argentinos</div>
-<ul class="price-features">
-<li>Clientes ilimitados</li>
-<li>Presupuestos ilimitados</li>
-<li>Dashboard completo con alertas</li>
-<li>Proveedores + historial de deudas</li>
-<li>Estadísticas y gráficos avanzados</li>
-<li>Adjuntar archivos (planos, comprobantes)</li>
-<li>Lista de Precios personalizable</li>
-<li>Soporte por WhatsApp</li>
-</ul>
-<a href="#contacto" class="price-btn btn-primary" style="background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff">30 días gratis, sin tarjeta 🚀</a>
-</div>
-<!-- CUSTOM -->
-<div class="price-card">
-<div class="price-name">Plan Empresa</div>
-<div class="price-desc">Para fábricas con múltiples usuarios y sucursales</div>
-<div class="price-amount" style="font-size:2rem">A medida</div>
-<div class="price-period">Hablamos y armamos tu plan</div>
-<ul class="price-features">
-<li>Todo lo del plan PRO</li>
-<li>Múltiples usuarios / roles</li>
-<li>Capacitación personalizada</li>
-<li>Integración con sistemas contables</li>
-<li>Soporte prioritario</li>
-</ul>
-<a href="https://wa.me/542364724515?text=Hola%21+Quiero+info+del+Plan+Empresa+de+Fabrizio+Admin." target="_blank" class="price-btn" style="background:rgba(16,185,129,.12);color:var(--green-light);border:1px solid rgba(16,185,129,.3)">Contactar por WhatsApp</a>
-</div>
-</div>
-<div style="text-align:center;margin-top:2rem;font-size:.82rem;color:var(--text3)">🔒 Pago seguro · 💸 30 días de prueba gratis · ❌ Cancelás cuando querés · 📱 Funciona en celular y PC</div>
-</div>
-</section>
+    <!-- PRICING -->
+    <section id="precios" class="section">
+        <div class="container">
+            <div class="text-center anim-fade">
+                <div class="section-label">Planes y Precios</div>
+                <h2 class="section-title">Invertí menos de lo que gana <span class="gradient-text">un presupuesto bien
+                        cerrado</span></h2>
+                <p class="section-sub">Precios en pesos argentinos. Sin letra chica. Cancelás cuando querés.</p>
+            </div>
+            <div class="pricing-grid anim-fade delay-1">
+                <!-- FREE -->
+                <div class="price-card">
+                    <div class="price-name">Plan Gratuito</div>
+                    <div class="price-desc">Para arrancar y probar sin riesgo</div>
+                    <div class="price-amount">$0<sup></sup></div>
+                    <div class="price-period">Para siempre gratis</div>
+                    <ul class="price-features">
+                        <li>Hasta 10 clientes</li>
+                        <li>Hasta 15 presupuestos por mes</li>
+                        <li>Dashboard de alertas</li>
+                        <li>Gestión básica de gastos</li>
+                        <li class="disabled">Proveedores y deudas</li>
+                        <li class="disabled">Estadísticas avanzadas</li>
+                        <li class="disabled">Adjuntar archivos</li>
+                    </ul>
+                    <a href="#contacto" class="price-btn"
+                        style="background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--border)">Empezar
+                        Gratis</a>
+                </div>
+                <!-- PRO -->
+                <div class="price-card featured">
+                    <div class="price-badge">⭐ MÁS POPULAR</div>
+                    <div class="price-name">Plan PRO</div>
+                    <div class="price-desc">Para carpinterías que van en serio</div>
+                    <div class="price-amount"><sup>$</sup>9.900</div>
+                    <div class="price-period">por mes · en pesos argentinos</div>
+                    <ul class="price-features">
+                        <li>Clientes ilimitados</li>
+                        <li>Presupuestos ilimitados</li>
+                        <li>Dashboard completo con alertas</li>
+                        <li>Proveedores + historial de deudas</li>
+                        <li>Estadísticas y gráficos avanzados</li>
+                        <li>Adjuntar archivos (planos, comprobantes)</li>
+                        <li>Lista de Precios personalizable</li>
+                        <li>Soporte por WhatsApp</li>
+                    </ul>
+                    <a href="#contacto" class="price-btn btn-primary"
+                        style="background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff">30 días
+                        gratis, sin tarjeta 🚀</a>
+                </div>
+                <!-- CUSTOM -->
+                <div class="price-card">
+                    <div class="price-name">Plan Empresa</div>
+                    <div class="price-desc">Para fábricas con múltiples usuarios y sucursales</div>
+                    <div class="price-amount" style="font-size:2rem">A medida</div>
+                    <div class="price-period">Hablamos y armamos tu plan</div>
+                    <ul class="price-features">
+                        <li>Todo lo del plan PRO</li>
+                        <li>Múltiples usuarios / roles</li>
+                        <li>Capacitación personalizada</li>
+                        <li>Integración con sistemas contables</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="https://wa.me/542364724515?text=Hola%21+Quiero+info+del+Plan+Empresa+de+Fabrizio+Admin."
+                        target="_blank" class="price-btn"
+                        style="background:rgba(16,185,129,.12);color:var(--green-light);border:1px solid rgba(16,185,129,.3)">Contactar
+                        por WhatsApp</a>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:2rem;font-size:.82rem;color:var(--text3)">🔒 Pago seguro · 💸 30
+                días de prueba gratis · ❌ Cancelás cuando querés · 📱 Funciona en celular y PC</div>
+        </div>
+    </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonios" class="section" style="background:rgba(15,31,56,.5);border-top:1px solid var(--border)">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">Casos de Éxito</div>
-<h2 class="section-title">Lo que dicen los <span class="gradient-text">carpinteros</span></h2>
-</div>
-<div class="testimonials-grid">
-<div class="testi-card anim-fade delay-1">
-<div class="testi-stars">★★★★★</div>
-<div class="testi-text">"Antes llevaba todo en un cuaderno y la mitad de las veces no sabía bien cuánto me debía cada cliente. Con Fabrizio Admin tengo todo al día y mando el presupuesto en PDF en dos minutos. Un antes y un después para mi carpintería."</div>
-<div class="testi-author">
-<div class="testi-avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">JG</div>
-<div><div class="testi-name">Juan González</div><div class="testi-role">Carpintería González, Junín · 3 años en el rubro</div></div>
-</div>
-</div>
-<div class="testi-card anim-fade delay-2">
-<div class="testi-stars">★★★★★</div>
-<div class="testi-text">"Lo que más me copó fue el módulo de proveedores. Yo le debía plata a varios y los tenía mezclados. Ahora entro y en 10 segundos sé exactamente cuánto le debo a cada uno y tengo el comprobante adjunto. Oro puro."</div>
-<div class="testi-author">
-<div class="testi-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">MR</div>
-<div><div class="testi-name">Marcelo Romero</div><div class="testi-role">Fábrica de Muebles MR, Lincoln · 8 años en el rubro</div></div>
-</div>
-</div>
-<div class="testi-card anim-fade delay-3">
-<div class="testi-stars">★★★★★</div>
-<div class="testi-text">"Soy pésimo para los números y el sistema igual te lo hace fácil. Las estadísticas me mostraron que estaba perdiendo plata en trabajos con ciertos materiales. Ahora ajusté los precios y mejoró muchísimo el margen. Imprescindible."</div>
-<div class="testi-author">
-<div class="testi-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">LP</div>
-<div><div class="testi-name">Luis Pereyra</div><div class="testi-role">Amoblamiento Pereyra, Pergamino · 12 años en el rubro</div></div>
-</div>
-</div>
-</div>
-</div>
-</section>
 
-<!-- FAQ -->
-<section id="faq" class="section">
-<div class="container">
-<div class="text-center anim-fade">
-<div class="section-label">Preguntas Frecuentes</div>
-<h2 class="section-title">Todo lo que necesitás <span class="gradient-text">saber</span></h2>
-</div>
-<div class="faq-list">
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Necesito saber de computación o programación?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Para nada. Si sabés usar WhatsApp, sabés usar Fabrizio Admin. El sistema está diseñado para carpinteros, no para técnicos. Todo es visual, intuitivo y en español argentino.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Funciona en el celular?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Sí, funciona perfectamente en celular, tablet y computadora. Solo necesitás un navegador (Chrome, Firefox, Safari). No hay nada que descargar ni instalar.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Mis datos están seguros?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Completamente. Usamos Supabase, la misma infraestructura de base de datos en la nube que usan empresas tecnológicas de primer nivel. Tus datos están encriptados y respaldados automáticamente todos los días. Nadie más tiene acceso.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo probar antes de pagar?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Sí. El Plan Gratuito no tiene fecha de vencimiento y el Plan PRO tiene 30 días de prueba completamente gratis. No pedimos tarjeta de crédito para empezar. Si no te convence, no pagás nada.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Qué pasa si ya tengo mis datos en una planilla de Excel?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Te ayudamos a migrar tus datos. Podemos cargar tus clientes y presupuestos existentes en el sistema para que no pierdas nada. Escribinos por WhatsApp y te guiamos paso a paso en el proceso de traspaso.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo cancelar en cualquier momento?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Sí, sin cláusulas raras ni períodos mínimos. Cancelás cuando querés y no te cobramos más. Tus datos quedan disponibles para exportar por 30 días después de cancelar.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)"><span>¿El sistema funciona si no tengo internet?</span><span class="faq-icon">+</span></div>
-<div class="faq-a">Por ahora el sistema requiere conexión a internet para sincronizar los datos en tiempo real. Para la mayoría de los usos cotidianos (presupuestar en obra, consultar deudas) alcanza con los datos del celular.</div>
-</div>
-</div>
-</div>
-</section>
 
-<!-- CTA FINAL -->
-<section id="contacto" class="cta-final" style="border-top:1px solid var(--border)">
-<div class="cta-bg"></div>
-<div class="container">
-<div class="cta-box anim-fade">
-<div class="cta-urgency">🔥 Solo quedan 12 cupos para el plan gratuito extendido</div>
-<h2 class="cta-title">Empezá hoy a <span class="gradient-text">ganar más</span> sin trabajar más</h2>
-<p class="cta-sub">Carpinterías de toda la Argentina ya le sacaron el cuaderno y adoptaron Fabrizio Admin. ¿Cuándo querés sumarte?</p>
-<div class="cta-btns">
-<a href="https://wa.me/542364724515?text=Hola%21+Quiero+empezar+con+Fabrizio+Admin+para+mi+carpinteria." target="_blank" class="btn btn-primary btn-lg">📲 Empezar por WhatsApp</a>
-<a href="#demo" class="btn btn-secondary btn-lg">▶ Ver la Demo primero</a>
-</div>
-<p class="cta-fine">Sin tarjeta · Sin instalación · En 5 minutos estás adentro</p>
-</div>
-</div>
-</section>
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="text-center anim-fade">
+                <div class="section-label">Preguntas Frecuentes</div>
+                <h2 class="section-title">Todo lo que necesitás <span class="gradient-text">saber</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Necesito saber de computación o
+                            programación?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-a">Para nada. Si sabés usar WhatsApp, sabés usar Fabrizio Admin. El sistema está
+                        diseñado para carpinteros, no para técnicos. Todo es visual, intuitivo y en español argentino.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Funciona en el celular?</span><span
+                            class="faq-icon">+</span></div>
+                    <div class="faq-a">Sí, funciona perfectamente en celular, tablet y computadora. Solo necesitás un
+                        navegador (Chrome, Firefox, Safari). No hay nada que descargar ni instalar.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Mis datos están seguros?</span><span
+                            class="faq-icon">+</span></div>
+                    <div class="faq-a">Completamente. Usamos Supabase, la misma infraestructura de base de datos en la
+                        nube que usan empresas tecnológicas de primer nivel. Tus datos están encriptados y respaldados
+                        automáticamente todos los días. Nadie más tiene acceso.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo probar antes de pagar?</span><span
+                            class="faq-icon">+</span></div>
+                    <div class="faq-a">Sí. El Plan Gratuito no tiene fecha de vencimiento y el Plan PRO tiene 30 días de
+                        prueba completamente gratis. No pedimos tarjeta de crédito para empezar. Si no te convence, no
+                        pagás nada.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Qué pasa si ya tengo mis datos en una planilla
+                            de Excel?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-a">Te ayudamos a migrar tus datos. Podemos cargar tus clientes y presupuestos
+                        existentes en el sistema para que no pierdas nada. Escribinos por WhatsApp y te guiamos paso a
+                        paso en el proceso de traspaso.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo cancelar en cualquier momento?</span><span
+                            class="faq-icon">+</span></div>
+                    <div class="faq-a">Sí, sin cláusulas raras ni períodos mínimos. Cancelás cuando querés y no te
+                        cobramos más. Tus datos quedan disponibles para exportar por 30 días después de cancelar.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)"><span>¿El sistema funciona si no tengo
+                            internet?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-a">Por ahora el sistema requiere conexión a internet para sincronizar los datos en
+                        tiempo real. Para la mayoría de los usos cotidianos (presupuestar en obra, consultar deudas)
+                        alcanza con los datos del celular.</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-<div class="container">
-<div class="footer-grid">
-<div class="footer-brand">
-<div class="nav-logo" style="margin-bottom:.75rem"><div class="nav-logo-icon">🪵</div><span>Fabrizio<span style="color:var(--text3);font-weight:400">Admin</span></span></div>
-<p>El CRM pensado para carpinterías y fábricas de muebles argentinas. Organización, control y crecimiento sin complicaciones.</p>
-</div>
-<div class="footer-col">
-<h4>Producto</h4>
-<ul>
-<li><a href="#caracteristicas">Características</a></li>
-<li><a href="#precios">Precios</a></li>
-<li><a href="#demo">Demo</a></li>
-<li><a href="#faq">Preguntas frecuentes</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Contacto</h4>
-<ul>
-<li><a href="https://wa.me/542364724515" target="_blank">📲 WhatsApp</a></li>
-<li><a href="#testimonios">Testimonios</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Fabrizio Admin · Hecho con ❤️ en Argentina 🇦🇷</span>
-<span>Todos los derechos reservados</span>
-</div>
-</div>
-</footer>
+    <!-- CTA FINAL -->
+    <section id="contacto" class="cta-final" style="border-top:1px solid var(--border)">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-box anim-fade">
+                <div class="cta-urgency">🔥 Oferta de lanzamiento — Primeros 30 usuarios con precio especial</div>
+                <h2 class="cta-title">Empezá hoy a <span class="gradient-text">ganar más</span> sin trabajar más</h2>
+                <p class="cta-sub">TallerPRO es el sistema que necesita tu carpintería para organizarse, cobrar a tiempo
+                    y crecer. ¿Cuándo arrancamos?</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/542364724515?text=Hola%21+Quiero+empezar+con+Fabrizio+Admin+para+mi+carpinteria."
+                        target="_blank" class="btn btn-primary btn-lg">📲 Empezar por WhatsApp</a>
+                    <a href="#demo" class="btn btn-secondary btn-lg">▶ Ver la Demo primero</a>
+                </div>
+                <p class="cta-fine">Sin tarjeta · Sin instalación · En 5 minutos estás adentro</p>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Navbar scroll effect
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo" style="margin-bottom:.75rem">
+                        <div class="nav-logo-icon">🔧</div><span>Taller<span
+                                style="color:var(--blue-light);font-weight:900">PRO</span></span>
+                    </div>
+                    <p>El CRM pensado para carpinterías y fábricas de muebles argentinas. Organización, control y
+                        crecimiento sin complicaciones.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#faq">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/542364724515" target="_blank">📲 WhatsApp</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 TallerPRO · Hecho con ❤️ en Argentina 🇦🇷</span>
+                <span>Todos los derechos reservados</span>
+            </div>
+        </div>
+    </footer>
 
-// Mobile menu
-function toggleMenu(){
-const nav=document.getElementById('mobile-nav');
-nav.classList.toggle('open');
-}
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50) });
 
-// Close mobile menu on outside click
-document.addEventListener('click',function(e){
-const nav=document.getElementById('mobile-nav');
-const hamburger=document.getElementById('hamburger');
-if(!nav.contains(e.target)&&!hamburger.contains(e.target)){nav.classList.remove('open')}
-});
+        // Mobile menu
+        function toggleMenu() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('open');
+        }
 
-// Scroll animations
-const observer=new IntersectionObserver((entries)=>{
-entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
-},{threshold:.12});
-document.querySelectorAll('.anim-fade').forEach(el=>observer.observe(el));
+        // Close mobile menu on outside click
+        document.addEventListener('click', function (e) {
+            const nav = document.getElementById('mobile-nav');
+            const hamburger = document.getElementById('hamburger');
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) { nav.classList.remove('open') }
+        });
 
-// Counter animation
-function animateCount(el){
-const target=+el.getAttribute('data-count');
-const suffix=el.getAttribute('data-suffix')||'+';
-let start=0;
-const duration=1800;
-const step=timestamp=>{
-if(!start) start=timestamp;
-const progress=Math.min((timestamp-start)/duration,1);
-const eased=1-Math.pow(1-progress,4);
-el.textContent=Math.floor(eased*target)+suffix;
-if(progress<1) requestAnimationFrame(step);
-else el.textContent=target+suffix;
-};
-requestAnimationFrame(step);
-}
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible') } });
+        }, { threshold: .12 });
+        document.querySelectorAll('.anim-fade').forEach(el => observer.observe(el));
 
-const counterObserver=new IntersectionObserver((entries)=>{
-entries.forEach(e=>{
-if(e.isIntersecting&&!e.target.dataset.animated){
-e.target.dataset.animated='true';
-animateCount(e.target);
-}
-});
-},{threshold:.5});
+        // Counter animation
+        function animateCount(el) {
+            const target = +el.getAttribute('data-count');
+            const suffix = el.getAttribute('data-suffix') || '+';
+            let start = 0;
+            const duration = 1800;
+            const step = timestamp => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 4);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target + suffix;
+            };
+            requestAnimationFrame(step);
+        }
 
-document.querySelectorAll('[data-count]').forEach(el=>{
-// assign suffix based on element context
-const lbl=el.nextElementSibling?.textContent||'';
-if(lbl.includes('satisfacción')) el.setAttribute('data-suffix','%');
-else if(lbl.includes('minuto')) el.setAttribute('data-suffix');
-else el.setAttribute('data-suffix','+');
-if(lbl.includes('minuto')) el.setAttribute('data-suffix','min');
-counterObserver.observe(el);
-});
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !e.target.dataset.animated) {
+                    e.target.dataset.animated = 'true';
+                    animateCount(e.target);
+                }
+            });
+        }, { threshold: .5 });
 
-// Demo tabs
-function setTab(btn,id){
-document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
-document.querySelectorAll('.demo-screen').forEach(s=>s.classList.remove('active'));
-btn.classList.add('active');
-document.getElementById(id).classList.add('active');
-}
+        document.querySelectorAll('[data-count]').forEach(el => {
+            // assign suffix based on element context
+            const lbl = el.nextElementSibling?.textContent || '';
+            if (lbl.includes('satisfacción')) el.setAttribute('data-suffix', '%');
+            else if (lbl.includes('minuto')) el.setAttribute('data-suffix');
+            else el.setAttribute('data-suffix', '+');
+            if (lbl.includes('minuto')) el.setAttribute('data-suffix', 'min');
+            counterObserver.observe(el);
+        });
 
-// FAQ accordion
-function toggleFaq(el){
-const item=el.parentElement;
-const wasOpen=item.classList.contains('open');
-document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-if(!wasOpen) item.classList.add('open');
-}
-</script>
+        // Demo tabs
+        function setTab(btn, id) {
+            document.querySelectorAll('.demo-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.demo-screen').forEach(s => s.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(id).classList.add('active');
+        }
+
+        // FAQ accordion
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+    </script>
 </body>
+
 </html>
